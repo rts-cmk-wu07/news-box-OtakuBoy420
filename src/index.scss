@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Europa";
+  src: url("./fonts/europa-regular-webfont.ttf");
+}
+@font-face {
+  font-family: "EuropaLight";
+  src: url("./fonts/europa-light-webfont.ttf");
+}
+@font-face {
+  font-family: "Rift Soft";
+  src: url("./fonts/rift-soft-regular.otf");
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+  font-family: "Europa", Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: unset;
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+button {
+  background: none;
+  outline: none;
+  border: none;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
+}
