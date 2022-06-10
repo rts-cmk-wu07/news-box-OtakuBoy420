@@ -5,6 +5,8 @@ import themeContext from "../context/themeContext";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaCog } from "react-icons/fa";
 import SearchField from "./SearchField";
+import { Link } from "react-router-dom";
+import { BsInbox } from "react-icons/bs";
 
 const Header = (props) => {
   const colors = useContext(themeContext);
@@ -25,13 +27,13 @@ const Header = (props) => {
   return (
     <>
       <header css={styles.header}>
-        <button>
-          <FaChevronLeft color={colors.Drab} />
-        </button>
+        <Link to="/">
+          <FaChevronLeft color={colors.Drab} size="20px" />
+        </Link>
         <h2>{props.title}</h2>
-        <button>
-          <FaCog color={colors.Drab} />
-        </button>
+        <Link to="/settings">
+          <FaCog color={colors.Drab} size="20px" />
+        </Link>
       </header>
       <SearchField />
     </>
