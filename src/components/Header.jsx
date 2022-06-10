@@ -6,7 +6,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaCog } from "react-icons/fa";
 import SearchField from "./SearchField";
 
-const Header = () => {
+const Header = (props) => {
   const colors = useContext(themeContext);
   const styles = {
     header: css`
@@ -28,7 +28,7 @@ const Header = () => {
         <button>
           <FaChevronLeft color={colors.Drab} />
         </button>
-        <h2>Archive</h2>
+        <h2>{props.title}</h2>
         <button>
           <FaCog color={colors.Drab} />
         </button>

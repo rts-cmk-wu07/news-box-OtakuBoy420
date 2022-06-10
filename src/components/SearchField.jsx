@@ -6,7 +6,6 @@ import { BiSearch } from "react-icons/bi";
 
 const SearchField = () => {
   const colors = useContext(themeContext);
-  console.log(colors);
   const styles = {
     searchfield: css`
       margin: 1rem auto;
@@ -32,6 +31,7 @@ const SearchField = () => {
       }
       .search-icon {
         margin-right: 1rem;
+        padding-top: 5px;
       }
       .searchFieldContainer {
         display: flex;
@@ -48,7 +48,7 @@ const SearchField = () => {
       <div className="searchFieldContainer">
         <input type="text" aria-label="Search-Field" placeholder="Search News" />
         <button type="submit">
-          <BiSearch className="search-icon" color={colors.Fossil} size="22px" />
+          <BiSearch className="search-icon" color={colors.Fossil} size="26px" />
         </button>
       </div>
     </div>

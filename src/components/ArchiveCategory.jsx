@@ -11,17 +11,19 @@ const ArchiveCategory = (props) => {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid #e0e1e2;
       & img {
         width: 35px;
         border-radius: 50px;
         background-color: white;
         padding: 0.4rem;
-        box-shadow: 0px 5px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+        box-shadow: 1px 3px 10px -8px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
       }
       & div {
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        margin-bottom: 1rem;
         & h2 {
           text-transform: uppercase;
           color: ${colors.Drab};
@@ -38,7 +40,9 @@ const ArchiveCategory = (props) => {
         <img src="./img/orangeicon.svg" alt="img" />
         <h2>{props.categoryTitle}</h2>
       </div>
-      <FiChevronDown size="26px" color={colors.Drab} />
+      <button>
+        <FiChevronDown size="26px" color={colors.Drab} />
+      </button>
     </article>
   );
 };
