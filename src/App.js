@@ -1,13 +1,18 @@
 import { Outlet } from "react-router";
-import ArchiveCategory from "./components/ArchiveCategory";
 import Header from "./components/Header";
-import Message from "./components/Message";
+import { useContext, useState } from "react";
+import themeContext from "./context/themeContext";
+import { BsWindowSidebar } from "react-icons/bs";
 
 function App() {
+  const colors = useContext(themeContext);
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const [isSettings, setIsSettings] = useState(false);
+  console.log(urlSearchParams);
+  console.log(window.location.href);
   return (
     <div className="App">
       <div className="wrapper">
-        <Header title="Archive" />
         <Outlet />
       </div>
     </div>

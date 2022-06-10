@@ -5,10 +5,12 @@ import themeContext from "../context/themeContext";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaCog } from "react-icons/fa";
 import SearchField from "./SearchField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsInbox } from "react-icons/bs";
+import Icon from "./Icon";
 
 const Header = (props) => {
+  const navigate = useNavigate();
   const colors = useContext(themeContext);
   const styles = {
     header: css`
@@ -27,15 +29,14 @@ const Header = (props) => {
   return (
     <>
       <header css={styles.header}>
-        <Link to="/">
-          <FaChevronLeft color={colors.Drab} size="20px" />
-        </Link>
+        <button onClick={() => navigate(-1)}>
+          <Icon iconName={props.iconLeft} size={props.iconLeftSize} color={props.iconLeftColor} />
+        </button>
         <h2>{props.title}</h2>
         <Link to="/settings">
-          <FaCog color={colors.Drab} size="20px" />
+          <Icon iconName={props.iconRight} size={props.iconRightSize} color={props.iconRightColor} />
         </Link>
       </header>
-      <SearchField />
     </>
   );
 };

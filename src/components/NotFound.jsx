@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import { useContext } from "react";
 import themeContext from "../context/themeContext";
+import Header from "./Header";
+import Icon from "./Icon";
 
 const NotFound = () => {
   const colors = useContext(themeContext);
@@ -13,9 +15,8 @@ const NotFound = () => {
       align-items: center;
       flex-direction: column;
       margin-top: 3rem;
-      font-size: 2rem;
+      font-size: 1.5rem;
       text-align: center;
-      width: 375px;
       color: ${colors.Drab};
       a {
         text-decoration: underline;
@@ -24,10 +25,24 @@ const NotFound = () => {
   };
   return (
     <>
+      <Header
+        title="Not Found"
+        iconLeft="FaChevronLeft"
+        iconLeftSize="20px"
+        iconLeftColor={colors.Drab}
+        iconRight="FaCog"
+        iconRightColor={colors.Drab}
+        iconRightSize="20px"
+      />
       <div css={styles.notfound} className="not-found">
         <h2>Sorry!</h2>
+        <br />
         <p>That page can't be found</p>
-        <Link to="/">Back to the homepage...</Link>
+        <br />
+        <Link to="/">
+          Back to the homepage
+          <Icon iconName="FaExternalLinkAlt" />
+        </Link>
       </div>
     </>
   );
