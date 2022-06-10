@@ -33,10 +33,12 @@ ul {
 img {
   width: 100%;
 }
+i,
 button {
   background: none;
   outline: none;
   border: none;
+  cursor: pointer;
 }
 .wrapper {
   margin: 0 auto;

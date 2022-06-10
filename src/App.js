@@ -12,9 +12,7 @@ function App() {
   console.log(window.location.href);
   return (
     <div className="App">
-      <div className="wrapper">
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 }
