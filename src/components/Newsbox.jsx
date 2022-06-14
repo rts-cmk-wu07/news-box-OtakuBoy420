@@ -7,7 +7,9 @@ import themeContext from "../context/themeContext";
 import ArchiveCategory from "./ArchiveCategory";
 import Message from "./Message";
 const Newsbox = () => {
-
+  const [showNewsSportContent, setShowNewsSportContent] = useState(false);
+  const [showHealthContent, setShowHealthContent] = useState(false);
+  const [showNewsTravelContent, setShowNewsTravelContent] = useState(false);
   const colors = useContext(themeContext);
   return (
     <>
@@ -22,39 +24,52 @@ const Newsbox = () => {
       />
       <SearchField />
       <section>
-        <ArchiveCategory categoryTitle="health" />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-          img="./img/image_21.png"
-        />
-        <ArchiveCategory categoryTitle="sport" />
-        <ArchiveCategory categoryTitle="travel" />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-          img="./img/image_21.png"
-        />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-          img="./img/image_21.png"
-        />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-          img="./img/image_21.png"
-        />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-          img="./img/image_21.png"
-        />
+        <div onClick={() => setShowHealthContent(!showHealthContent)}>
+          <ArchiveCategory categoryTitle="health" icon={showHealthContent ? "FaChevronDown" : "FaChevronLeft"} />
+        </div>
+        {showHealthContent && (
+          <Message
+            name="Kate Austen"
+            message="Hey Cody, you should definitely check 
+         out Yoga Six for hot yoga! They have…"
+            img="./img/image_21.png"
+          />
+        )}
+
+        <div onClick={() => setShowNewsSportContent(!showNewsSportContent)}>
+          <ArchiveCategory categoryTitle="sport" icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"} />
+        </div>
+        <div onClick={() => setShowNewsTravelContent(!showNewsTravelContent)}>
+          <ArchiveCategory categoryTitle="travel" icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
+        </div>
+        {showNewsTravelContent && (
+          <div>
+            <Message
+              name="Kate Austen"
+              message="Hey Cody, you should definitely check 
+ out Yoga Six for hot yoga! They have…"
+              img="./img/image_21.png"
+            />
+            <Message
+              name="Kate Austen"
+              message="Hey Cody, you should definitely check 
+ out Yoga Six for hot yoga! They have…"
+              img="./img/image_21.png"
+            />
+            <Message
+              name="Kate Austen"
+              message="Hey Cody, you should definitely check 
+ out Yoga Six for hot yoga! They have…"
+              img="./img/image_21.png"
+            />
+            <Message
+              name="Kate Austen"
+              message="Hey Cody, you should definitely check 
+ out Yoga Six for hot yoga! They have…"
+              img="./img/image_21.png"
+            />
+          </div>
+        )}
       </section>
     </>
   );

@@ -1,10 +1,16 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import ArchiveCategory from "./ArchiveCategory";
 import Header from "./Header";
 import Message from "./Message";
 import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
 import SearchField from "./SearchField";
-
+const styles = {
+  messagecontainer: css`
+    transition: all 0.5s ease;
+  `,
+};
 const Archive = () => {
   const [showSportContent, setShowSportContent] = useState(false);
   const [showTravelContent, setShowTravelContent] = useState(false);
@@ -24,7 +30,7 @@ const Archive = () => {
       <SearchField />
       <section>
         <div onClick={() => setShowSportContent(!showSportContent)}>
-          <ArchiveCategory categoryTitle="sport" />
+          <ArchiveCategory categoryTitle="sport" icon={showSportContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {showSportContent && (
           <Message
@@ -35,10 +41,10 @@ const Archive = () => {
           />
         )}
         <div onClick={() => setShowTravelContent(!showTravelContent)}>
-          <ArchiveCategory categoryTitle="travel" />
+          <ArchiveCategory categoryTitle="travel" icon={showTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {showTravelContent && (
-          <div>
+          <div css={styles.messagecontainer}>
             <Message
               name="Kate Austen"
               message="Hey Cody, you should definitely check 

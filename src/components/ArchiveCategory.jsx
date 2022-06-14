@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
 import { FiChevronDown } from "react-icons/fi";
+import Icon from "./Icon";
 
 const ArchiveCategory = (props) => {
   const colors = useContext(themeContext);
@@ -11,7 +12,7 @@ const ArchiveCategory = (props) => {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-block: 1rem;
+      padding-block: 1rem;
       & img {
         width: 35px;
         border-radius: 50px;
@@ -41,9 +42,7 @@ const ArchiveCategory = (props) => {
           <img src="./img/orangeicon.svg" alt="img" />
           <h2>{props.categoryTitle}</h2>
         </div>
-        <button>
-          <FiChevronDown size="26px" color={colors.Drab} />
-        </button>
+        <Icon iconName={props.icon} size="20px" color={colors.Drab} />
       </article>
       <hr />
     </>
