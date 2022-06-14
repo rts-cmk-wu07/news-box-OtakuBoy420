@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
 import { FiChevronDown } from "react-icons/fi";
 
@@ -11,7 +11,7 @@ const ArchiveCategory = (props) => {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #e0e1e2;
+      margin-block: 1rem;
       & img {
         width: 35px;
         border-radius: 50px;
@@ -22,8 +22,8 @@ const ArchiveCategory = (props) => {
       & div {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
+        column-gap: 0.75rem;
+        margin-left: 0.75rem;
         & h2 {
           text-transform: uppercase;
           color: ${colors.Drab};
@@ -35,15 +35,18 @@ const ArchiveCategory = (props) => {
     `,
   };
   return (
-    <article css={styles.archivecategory}>
-      <div>
-        <img src="./img/orangeicon.svg" alt="img" />
-        <h2>{props.categoryTitle}</h2>
-      </div>
-      <button>
-        <FiChevronDown size="26px" color={colors.Drab} />
-      </button>
-    </article>
+    <>
+      <article css={styles.archivecategory}>
+        <div>
+          <img src="./img/orangeicon.svg" alt="img" />
+          <h2>{props.categoryTitle}</h2>
+        </div>
+        <button>
+          <FiChevronDown size="26px" color={colors.Drab} />
+        </button>
+      </article>
+      <hr />
+    </>
   );
 };
 

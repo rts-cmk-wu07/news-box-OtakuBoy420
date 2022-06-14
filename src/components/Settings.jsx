@@ -17,19 +17,43 @@ const Settings = () => {
       article {
         background-color: ${colors.Snow};
         border-radius: 16px;
-        box-shadow: 0px 10px 10px -3px rgba(0, 0, 0, 0.28);
+        box-shadow: 0px 1px 10px -3px rgba(0, 0, 0, 0.28);
         padding: 1rem;
         display: flex;
         flex-direction: column;
         width: 90%;
         margin: 3rem auto;
-        gap: 3rem;
+        gap: 0.5rem;
       }
       div {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #f0f3f4;
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+      }
+      button {
+        font-family: "Rift Soft";
+        font-size: 14px;
+        border: 1px solid ${colors.Fossil};
+        padding: 0.75rem 2rem;
+        border-radius: 24px;
+        letter-spacing: 2px;
+        margin-block: 2rem;
+        color: #334856;
+      }
+      h2 {
+        color: ${colors.Sage};
+        font-size: 30px;
+        margin-top: 2rem;
+        margin-bottom: 2px;
+      }
+      h3 {
+        color: #707070;
+        font-family: "EuropaLight";
+        font-size: 20px;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid white;
       }
       h4 {
         text-transform: uppercase;
@@ -41,6 +65,12 @@ const Settings = () => {
         visibility: hidden;
       }
 
+      small {
+        margin-top: 1rem;
+        color: ${colors.Slate};
+        font-size: 12px;
+        margin-bottom: 2rem;
+      }
       label {
         cursor: pointer;
         text-indent: -9999px;
@@ -97,29 +127,35 @@ const Settings = () => {
           <div>
             <h4>europe</h4>
             <input type="checkbox" id="europe" />
-            <label for="europe">Toggle</label>
+            <label htmlFor="europe">Toggle</label>
           </div>
+          <hr />
           <div>
             <h4>health</h4>
             <input type="checkbox" id="health" />
-            <label for="health">Toggle</label>
+            <label htmlFor="health">Toggle</label>
           </div>
+          <hr />
           <div>
             <h4>sport</h4>
             <input type="checkbox" id="sport" />
-            <label for="sport">Toggle</label>
+            <label htmlFor="sport">Toggle</label>
           </div>
+          <hr />
           <div>
             <h4>business</h4>
             <input type="checkbox" id="business" />
-            <label for="business">Toggle</label>
+            <label htmlFor="business">Toggle</label>
           </div>
+          <hr />
           <div>
             <h4>travel</h4>
             <input type="checkbox" id="travel" />
-            <label for="travel">Toggle</label>
+            <label htmlFor="travel">Toggle</label>
           </div>
         </article>
+        <button>TOGGLE DARK MODE</button>
+        <small>Version 4.8.15.16.23.42</small>
       </section>
     </>
   );

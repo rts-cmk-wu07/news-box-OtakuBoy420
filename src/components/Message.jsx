@@ -11,7 +11,6 @@ const Message = (props) => {
       padding-block: 1rem;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #e0e1e2;
       background-color: white;
       & div {
         margin-top: 7px;
@@ -48,12 +47,13 @@ const Message = (props) => {
   return (
     <SwipeToDelete>
       <article css={styles.message}>
-        <img src="./img/message_img.png" alt="img" />
+        <img src={props.img} alt="img" />
         <div className="message__textContainer">
           <h2>{props.name}</h2>
           <p>{props.message}</p>
         </div>
       </article>
+      <hr />
     </SwipeToDelete>
   );
 };

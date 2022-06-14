@@ -6,6 +6,9 @@ import themeContext from "../context/themeContext";
 import SearchField from "./SearchField";
 
 const Archive = () => {
+  const [showSportContent, setShowSportContent] = useState(false);
+  const [showTravelContent, setShowTravelContent] = useState(false);
+  console.log(showSportContent);
   const colors = useContext(themeContext);
   return (
     <>
@@ -20,33 +23,48 @@ const Archive = () => {
       />
       <SearchField />
       <section>
-        <ArchiveCategory categoryTitle="sport" />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
+        <div onClick={() => setShowSportContent(!showSportContent)}>
+          <ArchiveCategory categoryTitle="sport" />
+        </div>
+        {showSportContent && (
+          <Message
+            name="Kate Austen"
+            message="Hey Cody, you should definitely check 
         out Yoga Six for hot yoga! They have…"
-        />
-        <ArchiveCategory categoryTitle="travel" />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-        />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-        />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-        />
-        <Message
-          name="Kate Austen"
-          message="Hey Cody, you should definitely check 
-        out Yoga Six for hot yoga! They have…"
-        />
+            img="./img/message_img.png"
+          />
+        )}
+        <div onClick={() => setShowTravelContent(!showTravelContent)}>
+          <ArchiveCategory categoryTitle="travel" />
+        </div>
+        {showTravelContent && (
+          <div>
+            <Message
+              name="Kate Austen"
+              message="Hey Cody, you should definitely check 
+         out Yoga Six for hot yoga! They have…"
+              img="./img/message_img.png"
+            />
+            <Message
+              name="Kate Austen"
+              message="Hey Cody, you should definitely check 
+         out Yoga Six for hot yoga! They have…"
+              img="./img/message_img.png"
+            />
+            <Message
+              name="Kate Austen"
+              message="Hey Cody, you should definitely check 
+         out Yoga Six for hot yoga! They have…"
+              img="./img/message_img.png"
+            />
+            <Message
+              name="Kate Austen"
+              message="Hey Cody, you should definitely check 
+         out Yoga Six for hot yoga! They have…"
+              img="./img/message_img.png"
+            />
+          </div>
+        )}
       </section>
     </>
   );

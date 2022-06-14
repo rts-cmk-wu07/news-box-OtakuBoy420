@@ -12,7 +12,8 @@ const SearchField = () => {
       border: none;
       outline: none;
       border-radius: 4px;
-      border-bottom: 1px solid #e0e1e2;
+      width: 90%;
+      margin-block: 1.25rem;
       & input {
         border-radius: 4px;
         background-color: ${colors.Ice};
@@ -44,14 +45,17 @@ const SearchField = () => {
     `,
   };
   return (
-    <div css={styles.searchfield}>
-      <div className="searchFieldContainer">
-        <input type="text" aria-label="Search-Field" placeholder="Search News" />
-        <button type="submit">
-          <BiSearch className="search-icon" color={colors.Fossil} size="26px" />
-        </button>
+    <>
+      <div css={styles.searchfield}>
+        <div className="searchFieldContainer">
+          <input type="text" aria-label="Search-Field" placeholder="Search News" />
+          <button type="submit">
+            <BiSearch className="search-icon" color={colors.Fossil} size="26px" />
+          </button>
+        </div>
       </div>
-    </div>
+      <hr />
+    </>
   );
 };
 
