@@ -6,6 +6,9 @@ import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
 import ArchiveCategory from "./ArchiveCategory";
 import Message from "./Message";
+import NewsArticle from "./NewsArticle";
+import { LeadingActions, SwipeableList, SwipeableListItem, SwipeAction, TrailingActions } from "react-swipeable-list";
+import "react-swipeable-list/dist/styles.css";
 const Newsbox = () => {
   const [showNewsSportContent, setShowNewsSportContent] = useState(false);
   const [showHealthContent, setShowHealthContent] = useState(false);
@@ -28,7 +31,7 @@ const Newsbox = () => {
           <ArchiveCategory categoryTitle="health" icon={showHealthContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {showHealthContent && (
-          <Message
+          <NewsArticle
             name="Kate Austen"
             message="Hey Cody, you should definitely check 
          out Yoga Six for hot yoga! They have…"
@@ -44,28 +47,10 @@ const Newsbox = () => {
         </div>
         {showNewsTravelContent && (
           <div>
-            <Message
+            <NewsArticle
               name="Kate Austen"
               message="Hey Cody, you should definitely check 
- out Yoga Six for hot yoga! They have…"
-              img="./img/image_21.png"
-            />
-            <Message
-              name="Kate Austen"
-              message="Hey Cody, you should definitely check 
- out Yoga Six for hot yoga! They have…"
-              img="./img/image_21.png"
-            />
-            <Message
-              name="Kate Austen"
-              message="Hey Cody, you should definitely check 
- out Yoga Six for hot yoga! They have…"
-              img="./img/image_21.png"
-            />
-            <Message
-              name="Kate Austen"
-              message="Hey Cody, you should definitely check 
- out Yoga Six for hot yoga! They have…"
+         out Yoga Six for hot yoga! They have…"
               img="./img/image_21.png"
             />
           </div>
