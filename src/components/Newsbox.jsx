@@ -7,28 +7,32 @@ import themeContext from "../context/themeContext";
 import ArchiveCategory from "./ArchiveCategory";
 import Message from "./Message";
 import NewsArticle from "./NewsArticle";
-import { LeadingActions, SwipeableList, SwipeableListItem, SwipeAction, TrailingActions } from "react-swipeable-list";
+import DarkmodeContext from "../context/DarkmodeContext";
 import "react-swipeable-list/dist/styles.css";
 const Newsbox = () => {
   const [showNewsSportContent, setShowNewsSportContent] = useState(false);
   const [showHealthContent, setShowHealthContent] = useState(false);
   const [showNewsTravelContent, setShowNewsTravelContent] = useState(false);
   const colors = useContext(themeContext);
+  const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   return (
     <>
       <Header
         title="Newsbox"
         iconLeft="FaInbox"
         iconLeftSize="20px"
-        iconLeftColor={colors.Drab}
+        iconLeftColor={!isDarkMode ? colors.Drab : "white"}
         iconRight="FaCog"
-        iconRightColor={colors.Drab}
+        iconRightColor={!isDarkMode ? colors.Drab : "white"}
         iconRightSize="20px"
       />
       <SearchField />
       <section>
         <div onClick={() => setShowHealthContent(!showHealthContent)}>
-          <ArchiveCategory categoryTitle="health" icon={showHealthContent ? "FaChevronDown" : "FaChevronLeft"} />
+          <ArchiveCategory
+            categoryTitle="health"
+            icon={showHealthContent ? "FaChevronDown" : "FaChevronLeft"}
+          />
         </div>
         {showHealthContent && (
           <NewsArticle
@@ -40,10 +44,16 @@ const Newsbox = () => {
         )}
 
         <div onClick={() => setShowNewsSportContent(!showNewsSportContent)}>
-          <ArchiveCategory categoryTitle="sport" icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"} />
+          <ArchiveCategory
+            categoryTitle="sport"
+            icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"}
+          />
         </div>
         <div onClick={() => setShowNewsTravelContent(!showNewsTravelContent)}>
-          <ArchiveCategory categoryTitle="travel" icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
+          <ArchiveCategory
+            categoryTitle="travel"
+            icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"}
+          />
         </div>
         {showNewsTravelContent && (
           <div>

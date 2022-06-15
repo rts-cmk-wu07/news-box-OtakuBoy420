@@ -6,12 +6,14 @@ import Message from "./Message";
 import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
 import SearchField from "./SearchField";
+import DarkmodeContext from "../context/DarkmodeContext";
 const styles = {
   messagecontainer: css`
     transition: all 0.5s ease;
   `,
 };
 const Archive = () => {
+  const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   const [showSportContent, setShowSportContent] = useState(false);
   const [showTravelContent, setShowTravelContent] = useState(false);
   console.log(showSportContent);
@@ -22,15 +24,18 @@ const Archive = () => {
         title="Archive"
         iconLeft="FaChevronLeft"
         iconLeftSize="20px"
-        iconLeftColor={colors.Drab}
+        iconLeftColor={!isDarkMode ? colors.Drab : "white"}
         iconRight="FaCog"
-        iconRightColor={colors.Drab}
+        iconRightColor={!isDarkMode ? colors.Drab : "white"}
         iconRightSize="20px"
       />
       <SearchField />
       <section>
         <div onClick={() => setShowSportContent(!showSportContent)}>
-          <ArchiveCategory categoryTitle="sport" icon={showSportContent ? "FaChevronDown" : "FaChevronLeft"} />
+          <ArchiveCategory
+            categoryTitle="sport"
+            icon={showSportContent ? "FaChevronDown" : "FaChevronLeft"}
+          />
         </div>
         {showSportContent && (
           <Message
@@ -41,7 +46,10 @@ const Archive = () => {
           />
         )}
         <div onClick={() => setShowTravelContent(!showTravelContent)}>
-          <ArchiveCategory categoryTitle="travel" icon={showTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
+          <ArchiveCategory
+            categoryTitle="travel"
+            icon={showTravelContent ? "FaChevronDown" : "FaChevronLeft"}
+          />
         </div>
         {showTravelContent && (
           <div css={styles.messagecontainer}>

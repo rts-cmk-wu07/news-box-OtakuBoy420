@@ -1,14 +1,19 @@
 import { Outlet } from "react-router";
-import Header from "./components/Header";
 import { useContext, useState } from "react";
-import themeContext from "./context/themeContext";
-import { BsWindowSidebar } from "react-icons/bs";
-
+import DarkmodeContext from "./context/DarkmodeContext";
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  if (!isDarkMode) {
+    document.body.style.backgroundColor = "#fff"
+  } else {
+    document.body.style.backgroundColor = "#000"
+  }
   return (
-    <div className="App">
-      <Outlet />
-    </div>
+    <DarkmodeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
+      <div className="App">
+        <Outlet />
+      </div>
+    </DarkmodeContext.Provider>
   );
 }
 

@@ -2,25 +2,31 @@
   font-family: "Europa";
   src: url("./fonts/europa-regular-webfont.ttf");
 }
+
 @font-face {
   font-family: "EuropaLight";
   src: url("./fonts/europa-light-webfont.ttf");
 }
+
 @font-face {
   font-family: "Rift Soft";
   src: url("./fonts/rift-soft-regular.otf");
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   user-select: none;
+  transition: all 0.5s ease;
 }
+
 body {
   background-color: #ffffff;
   scroll-behavior: smooth;
   font-family: "Europa", Arial, Helvetica, sans-serif;
 }
+
 a {
   text-decoration: none;
   color: unset;
@@ -34,6 +40,7 @@ ul {
 img {
   width: 100%;
 }
+
 i,
 button {
   background: none;
@@ -41,16 +48,47 @@ button {
   border: none;
   cursor: pointer;
 }
+
 hr {
   border: 0;
   height: 1px;
   background: #e0e1e2;
 }
+
 .wrapper {
   margin: 0 auto;
   width: 90%;
 }
 
-.swiped {
-  transform: translateX(-100px);
+.dark {
+  background-color: black !important;
+  color: white !important;
+}
+
+.gray {
+  background-color: #272727 !important;
+  color: white !important;
+}
+
+.white {
+  color: white !important;
+}
+
+i {
+  transition: none !important;
+}
+
+.basic-swipeable-list__container {
+  width: 100%;
+  margin: 16px 0;
+  outline-color: gray;
+  outline-style: solid;
+  outline-width: 1px 0;
+}
+
+.icon {
+  fill: white;
+  width: 32px;
+  height: 32px;
+  align-self: center;
 }

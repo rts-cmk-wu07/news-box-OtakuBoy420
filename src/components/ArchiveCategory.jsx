@@ -2,11 +2,12 @@
 import { css } from "@emotion/react";
 import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
-import { FiChevronDown } from "react-icons/fi";
 import Icon from "./Icon";
+import DarkmodeContext from "../context/DarkmodeContext";
 
 const ArchiveCategory = (props) => {
   const colors = useContext(themeContext);
+  const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   const styles = {
     archivecategory: css`
       display: flex;
@@ -37,12 +38,21 @@ const ArchiveCategory = (props) => {
   };
   return (
     <>
-      <article css={styles.archivecategory}>
+      <article
+        css={styles.archivecategory}
+        className={`${isDarkMode ? "dark  " : " "}`}
+      >
         <div>
           <img src="./img/orangeicon.svg" alt="img" />
-          <h2>{props.categoryTitle}</h2>
+          <h2 className={`${isDarkMode ? "white" : " "}`}>
+            {props.categoryTitle}
+          </h2>
         </div>
-        <Icon iconName={props.icon} size="20px" color={colors.Drab} />
+        <Icon
+          iconName={props.icon}
+          size="20px"
+          color={!isDarkMode ? colors.Drab : "white"}
+        />
       </article>
       <hr />
     </>

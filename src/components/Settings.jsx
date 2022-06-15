@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Header from "./Header";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import themeContext from "../context/themeContext";
-
+import DarkmodeContext from "../context/DarkmodeContext";
 const Settings = () => {
   const colors = useContext(themeContext);
   const styles = {
@@ -109,53 +109,62 @@ const Settings = () => {
       }
     `,
   };
+  const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
+  console.log(isDarkMode);
   return (
     <>
       <Header
         title="News settings"
         iconLeft="FaChevronLeft"
         iconLeftSize="20px"
-        iconLeftColor={colors.Drab}
+        iconLeftColor={!isDarkMode ? colors.Drab : "white"}
         iconRight="FaCog"
-        iconRightColor="#fff"
-        iconRightSize="20px"
+        iconRightColor={colors.Drab}
+        iconRightSize="0px"
       />
-      <section css={styles.settings}>
+      <section css={styles.settings} className={`${isDarkMode ? "dark" : ""}`}>
         <h2>Manage</h2>
-        <h3>Categories</h3>
-        <article>
+        <h3 className={`${isDarkMode ? "white" : ""}`}>Categories</h3>
+        <article className={`${isDarkMode ? "gray" : ""}`}>
           <div>
-            <h4>europe</h4>
+            <h4 className={`${isDarkMode ? "white" : ""}`}>europe</h4>
             <input type="checkbox" id="europe" />
             <label htmlFor="europe">Toggle</label>
           </div>
           <hr />
           <div>
-            <h4>health</h4>
+            <h4 className={`${isDarkMode ? "white" : ""}`}>health</h4>
             <input type="checkbox" id="health" />
             <label htmlFor="health">Toggle</label>
           </div>
           <hr />
           <div>
-            <h4>sport</h4>
+            <h4 className={`${isDarkMode ? "white" : ""}`}>sport</h4>
             <input type="checkbox" id="sport" />
             <label htmlFor="sport">Toggle</label>
           </div>
           <hr />
           <div>
-            <h4>business</h4>
+            <h4 className={`${isDarkMode ? "white" : ""}`}>business</h4>
             <input type="checkbox" id="business" />
             <label htmlFor="business">Toggle</label>
           </div>
           <hr />
           <div>
-            <h4>travel</h4>
+            <h4 className={`${isDarkMode ? "white" : ""}`}>travel</h4>
             <input type="checkbox" id="travel" />
             <label htmlFor="travel">Toggle</label>
           </div>
         </article>
-        <button>TOGGLE DARK MODE</button>
-        <small>Version 4.8.15.16.23.42</small>
+        <button
+          className={`${isDarkMode ? "dark" : ""}`}
+          onClick={() => setIsDarkMode(!isDarkMode)}
+        >
+          TOGGLE DARK MODE
+        </button>
+        <small className={`${isDarkMode ? "white" : ""}`}>
+          Version 4.8.15.16.23.42
+        </small>
       </section>
     </>
   );

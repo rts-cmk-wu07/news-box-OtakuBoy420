@@ -1,22 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
-import { LeadingActions, SwipeableList, SwipeableListItem, SwipeAction, TrailingActions } from "react-swipeable-list";
+import {
+  LeadingActions,
+  SwipeableList,
+  SwipeableListItem,
+  SwipeAction,
+  TrailingActions,
+} from "react-swipeable-list";
 import "react-swipeable-list/dist/styles.css";
+import Icon from "./Icon";
+import DarkmodeContext from "../context/DarkmodeContext";
 const Message = (props) => {
-  const leadingActions = () => (
-    <LeadingActions>
-      <SwipeAction onClick={() => console.info("swipe action triggered")}>Action name</SwipeAction>
-    </LeadingActions>
-  );
-
-  const trailingActions = () => (
-    <TrailingActions>
-      <SwipeAction onClick={() => console.info("swipe action triggered")}>Delete</SwipeAction>
-    </TrailingActions>
-  );
-
+  const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   const colors = useContext(themeContext);
   const styles = {
     message: css`
@@ -50,19 +47,34 @@ const Message = (props) => {
         align-items: center;
         justify-content: center;
         position: absolute;
-
         top: -15.2px;
         right: 0;
       }
     `,
+    swipecontainer: css`
+      display: flex;
+      background-color: ${colors.Slate};
+      align-items: center;
+      justify-content: center;
+    `,
   };
+  const trailingActions = () => (
+    <TrailingActions>
+      <SwipeAction onClick={() => console.info("swipe action triggered")}>
+        <div className="swipeContainer" css={styles.swipecontainer}>
+          <Icon iconName="FaInbox" size="20px" color={colors.Snow} />
+        </div>
+      </SwipeAction>
+    </TrailingActions>
+  );
+
   return (
     <SwipeableList>
-      <SwipeableListItem leadingActions={leadingActions()} trailingActions={trailingActions()}>
-        <article css={styles.message}>
+      <SwipeableListItem trailingActions={trailingActions()}>
+        <article css={styles.message} className={`${isDarkMode ? "dark" : ""}`}>
           <img src={props.img} alt="img" />
           <div className="message__textContainer">
-            <h2>{props.name}</h2>
+            <h2 className={`${isDarkMode ? "white" : ""}`}>{props.name}</h2>
             <p>{props.message}</p>
           </div>
         </article>

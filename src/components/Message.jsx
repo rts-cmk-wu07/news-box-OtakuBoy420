@@ -4,7 +4,9 @@ import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
 import SwipeToDelete from "react-swipe-to-delete-component";
 import "react-swipe-to-delete-component/dist/swipe-to-delete.css";
+import DarkmodeContext from "../context/DarkmodeContext";
 const Message = (props) => {
+  const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   const colors = useContext(themeContext);
   const styles = {
     message: css`
@@ -46,10 +48,10 @@ const Message = (props) => {
   };
   return (
     <SwipeToDelete>
-      <article css={styles.message}>
+      <article css={styles.message} className={`${isDarkMode ? "gray" : ""}`}>
         <img src={props.img} alt="img" />
         <div className="message__textContainer">
-          <h2>{props.name}</h2>
+          <h2 className={`${isDarkMode ? "white" : ""}`}>{props.name}</h2>
           <p>{props.message}</p>
         </div>
       </article>
