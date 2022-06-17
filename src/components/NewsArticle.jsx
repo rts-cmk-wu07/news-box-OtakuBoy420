@@ -55,7 +55,7 @@ const Message = (props) => {
   };
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => alert("din far")}>
+      <SwipeAction onClick={() => console.log("din far")}>
         <div className="swipeContainer" css={styles.swipecontainer}>
           <Icon iconName="FaInbox" size="20px" color={colors.Snow} />
         </div>

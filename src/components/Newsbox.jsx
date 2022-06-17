@@ -12,11 +12,8 @@ import "react-swipeable-list/dist/styles.css";
 import useFetch from "../useFetch";
 
 const Newsbox = () => {
-  const { data, error, isPending } = useFetch("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
-  if (!isPending) {
-    console.log(data.results);
-  }
-
+  const { data, error, isPending } = useFetch("https://api.nytimes.com/svc/topstories/v2/health.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
+  if (!isPending) console.log(data.results);
   const [showNewsSportContent, setShowNewsSportContent] = useState(false);
   const [showHealthContent, setShowHealthContent] = useState(false);
   const [showNewsTravelContent, setShowNewsTravelContent] = useState(false);
@@ -39,15 +36,15 @@ const Newsbox = () => {
           <ArchiveCategory categoryTitle="health" icon={showHealthContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
 
-        {
-          !isPending && showHealthContent && data.results.map((data) => <NewsArticle name={data.title} img={data.multimedia[2].url}></NewsArticle>)
-          //   <NewsArticle
-          //     name="Kate Austen"
-          //     message="Hey Cody, you should definitely check
-          //  out Yoga Six for hot yoga! They have…"
-          //     img="./img/image_21.png"
-          //   />
-        }
+        {!isPending &&
+          showHealthContent &&
+          data.results.map((data, index) => (
+            <NewsArticle
+              name={data !== null ? data.title : "Article not found"}
+              img={data.multimedia !== null ? data.multimedia[2].url : "https://picsum.photos/200/200"}
+              key={index}
+            ></NewsArticle>
+          ))}
 
         <div onClick={() => setShowNewsSportContent(!showNewsSportContent)}>
           <ArchiveCategory categoryTitle="sport" icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"} />

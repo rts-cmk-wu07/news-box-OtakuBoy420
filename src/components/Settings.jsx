@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Header from "./Header";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import themeContext from "../context/themeContext";
 import DarkmodeContext from "../context/DarkmodeContext";
 const Settings = () => {
@@ -110,7 +110,12 @@ const Settings = () => {
     `,
   };
   const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
-  console.log(isDarkMode);
+  const setThemeInStorage = (theme) => {
+    localStorage.setItem("theme", theme);
+  };
+  useEffect(() => {
+    setThemeInStorage(isDarkMode);
+  }, [isDarkMode]);
   return (
     <>
       <Header
@@ -156,15 +161,10 @@ const Settings = () => {
             <label htmlFor="travel">Toggle</label>
           </div>
         </article>
-        <button
-          className={`${isDarkMode ? "dark" : ""}`}
-          onClick={() => setIsDarkMode(!isDarkMode)}
-        >
+        <button className={`${isDarkMode ? "dark" : ""}`} onClick={() => setIsDarkMode(!isDarkMode)}>
           TOGGLE DARK MODE
         </button>
-        <small className={`${isDarkMode ? "white" : ""}`}>
-          Version 4.8.15.16.23.42
-        </small>
+        <small className={`${isDarkMode ? "white" : ""}`}>Version 4.8.15.16.23.42</small>
       </section>
     </>
   );
