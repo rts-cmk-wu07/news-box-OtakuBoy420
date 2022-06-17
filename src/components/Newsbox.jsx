@@ -9,7 +9,14 @@ import Message from "./Message";
 import NewsArticle from "./NewsArticle";
 import DarkmodeContext from "../context/DarkmodeContext";
 import "react-swipeable-list/dist/styles.css";
+import useFetch from "../useFetch";
+
 const Newsbox = () => {
+  const { data, error, isPending } = useFetch("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
+  if (!isPending) {
+    console.log(data.results);
+  }
+
   const [showNewsSportContent, setShowNewsSportContent] = useState(false);
   const [showHealthContent, setShowHealthContent] = useState(false);
   const [showNewsTravelContent, setShowNewsTravelContent] = useState(false);
@@ -29,31 +36,24 @@ const Newsbox = () => {
       <SearchField />
       <section>
         <div onClick={() => setShowHealthContent(!showHealthContent)}>
-          <ArchiveCategory
-            categoryTitle="health"
-            icon={showHealthContent ? "FaChevronDown" : "FaChevronLeft"}
-          />
+          <ArchiveCategory categoryTitle="health" icon={showHealthContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
-        {showHealthContent && (
-          <NewsArticle
-            name="Kate Austen"
-            message="Hey Cody, you should definitely check 
-         out Yoga Six for hot yoga! They have…"
-            img="./img/image_21.png"
-          />
-        )}
+
+        {
+          !isPending && showHealthContent && data.results.map((data) => <NewsArticle name={data.title} img={data.multimedia[2].url}></NewsArticle>)
+          //   <NewsArticle
+          //     name="Kate Austen"
+          //     message="Hey Cody, you should definitely check
+          //  out Yoga Six for hot yoga! They have…"
+          //     img="./img/image_21.png"
+          //   />
+        }
 
         <div onClick={() => setShowNewsSportContent(!showNewsSportContent)}>
-          <ArchiveCategory
-            categoryTitle="sport"
-            icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"}
-          />
+          <ArchiveCategory categoryTitle="sport" icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         <div onClick={() => setShowNewsTravelContent(!showNewsTravelContent)}>
-          <ArchiveCategory
-            categoryTitle="travel"
-            icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"}
-          />
+          <ArchiveCategory categoryTitle="travel" icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {showNewsTravelContent && (
           <div>

@@ -2,13 +2,7 @@
 import { css } from "@emotion/react";
 import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
-import {
-  LeadingActions,
-  SwipeableList,
-  SwipeableListItem,
-  SwipeAction,
-  TrailingActions,
-} from "react-swipeable-list";
+import { LeadingActions, SwipeableList, SwipeableListItem, SwipeAction, TrailingActions } from "react-swipeable-list";
 import "react-swipeable-list/dist/styles.css";
 import Icon from "./Icon";
 import DarkmodeContext from "../context/DarkmodeContext";
@@ -28,6 +22,7 @@ const Message = (props) => {
         width: 70px;
         margin-right: 1rem;
         margin-bottom: 1rem;
+        border-radius: 50%;
       }
       & h2 {
         color: ${colors.Drab};
@@ -60,7 +55,7 @@ const Message = (props) => {
   };
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.info("swipe action triggered")}>
+      <SwipeAction onClick={() => alert("din far")}>
         <div className="swipeContainer" css={styles.swipecontainer}>
           <Icon iconName="FaInbox" size="20px" color={colors.Snow} />
         </div>
