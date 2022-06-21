@@ -16,7 +16,6 @@ const Archive = () => {
   const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   const [showSportContent, setShowSportContent] = useState(false);
   const [showTravelContent, setShowTravelContent] = useState(false);
-  console.log(showSportContent);
   const colors = useContext(themeContext);
   return (
     <>
@@ -32,10 +31,7 @@ const Archive = () => {
       <SearchField />
       <section>
         <div onClick={() => setShowSportContent(!showSportContent)}>
-          <ArchiveCategory
-            categoryTitle="sport"
-            icon={showSportContent ? "FaChevronDown" : "FaChevronLeft"}
-          />
+          <ArchiveCategory categoryTitle="sport" icon={showSportContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {showSportContent && (
           <Message
@@ -46,10 +42,7 @@ const Archive = () => {
           />
         )}
         <div onClick={() => setShowTravelContent(!showTravelContent)}>
-          <ArchiveCategory
-            categoryTitle="travel"
-            icon={showTravelContent ? "FaChevronDown" : "FaChevronLeft"}
-          />
+          <ArchiveCategory categoryTitle="travel" icon={showTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {showTravelContent && (
           <div css={styles.messagecontainer}>

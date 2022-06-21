@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const CategoryContext = createContext(true);
+const CategoryContext = createContext();
 
-export default DarkmodeContext;
+export default CategoryContext;

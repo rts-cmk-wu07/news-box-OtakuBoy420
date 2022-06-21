@@ -110,12 +110,6 @@ const Settings = () => {
     `,
   };
   const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
-  const setThemeInStorage = (theme) => {
-    localStorage.setItem("theme", theme);
-  };
-  useEffect(() => {
-    setThemeInStorage(isDarkMode);
-  }, [isDarkMode]);
   return (
     <>
       <Header

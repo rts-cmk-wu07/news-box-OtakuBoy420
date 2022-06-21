@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import themeContext from "../context/themeContext";
 import { BiSearch } from "react-icons/bi";
 import DarkmodeContext from "../context/DarkmodeContext";
@@ -8,6 +8,7 @@ import DarkmodeContext from "../context/DarkmodeContext";
 const SearchField = () => {
   const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   const colors = useContext(themeContext);
+  const [query, setQuery] = useState("");
   const styles = {
     searchfield: css`
       margin: 1rem auto;
@@ -55,13 +56,11 @@ const SearchField = () => {
             aria-label="Search-Field"
             placeholder="Search News"
             className={`${isDarkMode ? "gray" : " "}`}
+            onChange={(e) => setQuery(e.target.value)}
+            spellCheck="false"
           />
           <button type="submit">
-            <BiSearch
-              className="search-icon"
-              color={colors.Fossil}
-              size="26px"
-            />
+            <BiSearch className="search-icon" color={colors.Fossil} size="26px" />
           </button>
         </div>
       </div>

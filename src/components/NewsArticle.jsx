@@ -53,9 +53,12 @@ const Message = (props) => {
       justify-content: center;
     `,
   };
+  function clickMe(event) {
+    console.log("swipe");
+  }
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.log("din far")}>
+      <SwipeAction onClick={(event) => clickMe(event)}>
         <div className="swipeContainer" css={styles.swipecontainer}>
           <Icon iconName="FaInbox" size="20px" color={colors.Snow} />
         </div>
