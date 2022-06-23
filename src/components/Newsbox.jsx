@@ -18,23 +18,21 @@ const Newsbox = () => {
   const colors = useContext(themeContext);
   const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   const {
-    data: healthData,
-    error: healthError,
-    isPending: healthIsPending,
-  } = useFetch("https://api.nytimes.com/svc/topstories/v2/health.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
-
-  const {
-    data: sportData,
-    error: sportError,
-    isPending: sportIsPending,
-  } = useFetch("https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
-  const {
     data: travelData,
     error: travelError,
-    isPending: travelIsPending,
+    isPending: travelIsPending, 
   } = useFetch("https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
   const { categories } = useContext(CategoryContext);
+  console.log(categories);
+  let categoriesKeys = [];
+  categories.map((category) => {
+    categoriesKeys.push(Object.keys(category));
+  });
 
+  let selectedCategories = [];
+  categories.map((category, i) => {
+    category[categoriesKeys[i][0]] && selectedCategories.push(Object.keys(category));
+  });
   return (
     <>
       <Header
@@ -46,33 +44,11 @@ const Newsbox = () => {
         iconRightColor={!isDarkMode ? colors.Drab : "white"}
         iconRightSize="20px"
       />
+
       <SearchField />
       <section>
-        <div onClick={() => setShowHealthContent(!showHealthContent)}></div>
-        {!healthIsPending &&
-          showHealthContent &&
-          healthData.results.map((data, index) => (
-            <NewsArticle
-              name={data.multimedia !== null ? data.title : "Article not found"}
-              img={data.multimedia !== null ? data.multimedia[2].url : "https://picsum.photos/200/200"}
-              key={data.title + index}
-            ></NewsArticle>
-          ))}
-
-        <div onClick={() => setShowNewsSportContent(!showNewsSportContent)}>
-          <ArchiveCategory categoryTitle="sport" icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"} />
-        </div>
-        {!sportIsPending &&
-          showNewsSportContent &&
-          sportData.results.map((data, index) => (
-            <NewsArticle
-              name={data.multimedia !== null ? data.title : "Article not found"}
-              img={data.multimedia !== null ? data.multimedia[2].url : "https://picsum.photos/200/200"}
-              key={index}
-            ></NewsArticle>
-          ))}
         <div onClick={() => setShowNewsTravelContent(!showNewsTravelContent)}>
-          <ArchiveCategory categoryTitle="travel" icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
+          <ArchiveCategory categoryTitle="din far" icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {!travelIsPending &&
           showNewsTravelContent &&
@@ -83,6 +59,16 @@ const Newsbox = () => {
               key={index}
             ></NewsArticle>
           ))}
+        <div>
+          {selectedCategories &&
+            selectedCategories.map((category) => {
+              return (
+                <div key={category}>
+                  <ArchiveCategory categoryTitle={category} key={category} icon="FaChevronDown" />
+                </div>
+              );
+            })}
+        </div>
       </section>
     </>
   );

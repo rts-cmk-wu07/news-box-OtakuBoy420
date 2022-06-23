@@ -73,9 +73,7 @@ const Checkbox = (props) => {
   return (
     <>
       <label css={styles.checkbox}>
-        {(props.checked && (
-          <input type="checkbox" defaultChecked onClick={updateCategory} />
-        )) || <input type="checkbox" onClick={updateCategory} />}
+        {(props.checked && <input type="checkbox" defaultChecked onClick={updateCategory} />) || <input type="checkbox" onClick={updateCategory} />}
         <span></span>
       </label>
     </>

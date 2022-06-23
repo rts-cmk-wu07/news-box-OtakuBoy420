@@ -53,12 +53,12 @@ const Message = (props) => {
       justify-content: center;
     `,
   };
-  function clickMe(event) {
-    console.log("swipe");
+  function saveArticle({ name, img, message }) {
+    localStorage.setItem("saved_article", JSON.stringify(name));
   }
-  const trailingActions = () => (
+  const trailingActions = (data) => (
     <TrailingActions>
-      <SwipeAction onClick={(event) => clickMe(event)}>
+      <SwipeAction onClick={() => saveArticle(data)}>
         <div className="swipeContainer" css={styles.swipecontainer}>
           <Icon iconName="FaInbox" size="20px" color={colors.Snow} />
         </div>
@@ -68,7 +68,7 @@ const Message = (props) => {
 
   return (
     <SwipeableList>
-      <SwipeableListItem trailingActions={trailingActions()}>
+      <SwipeableListItem trailingActions={trailingActions(props)}>
         <article css={styles.message} className={`${isDarkMode ? "grey" : ""}`}>
           <img src={props.img} alt="img" />
           <div className="message__textContainer">

@@ -58,7 +58,7 @@ const Message = (props) => {
     <TrailingActions>
       <SwipeAction destructive={true}>
         <div className="swipeContainer" css={styles.swipecontainer}>
-          <Icon iconName="FaTrashAlt" size="20px" color={colors.Snow} />
+          <Icon iconName="FaTrash" size="20px" color={colors.Snow} />
         </div>
       </SwipeAction>
     </TrailingActions>
@@ -66,7 +66,7 @@ const Message = (props) => {
 
   return (
     <SwipeableList>
-      <SwipeableListItem trailingActions={trailingActions()}>
+      <SwipeableListItem trailingActions={trailingActions()} onClick={() => console.log("swipe")}>
         <article css={styles.message} className={`${isDarkMode ? "gray" : ""}`}>
           <img src={props.img} alt="img" />
           <div className="message__textContainer">
