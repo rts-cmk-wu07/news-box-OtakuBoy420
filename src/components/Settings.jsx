@@ -10,8 +10,7 @@ import DarkmodeContext from "../context/DarkmodeContext";
 const Settings = () => {
   const colors = useContext(themeContext);
   const { categories } = useContext(CategoryContext);
-  let categorySettings =
-    JSON.parse(localStorage.getItem("categorySettings")) || false;
+  let categorySettings = JSON.parse(localStorage.getItem("categorySettings")) || false;
 
   let categoriesKeys = [];
   categories.map((category) => {
@@ -20,7 +19,6 @@ const Settings = () => {
   const { isDarkMode, setIsDarkMode } = useContext(DarkmodeContext);
   const styles = {
     settings: css`
-      padding-top: 40px;
       background-color: #eceff0;
       display: flex;
       flex-direction: column;
@@ -109,28 +107,15 @@ const Settings = () => {
             return (
               <div key={category}>
                 <h4 className={`${isDarkMode ? "white" : ""}`}>{category}</h4>
-                <Switch
-                  category={category}
-                  checked={
-                    (categorySettings &&
-                      categorySettings[i][category] &&
-                      true) ||
-                    false
-                  }
-                />
+                <Switch category={category} checked={(categorySettings && categorySettings[i][category] && true) || false} />
               </div>
             );
           })}
         </section>
-        <button
-          className={`${isDarkMode ? "dark" : ""}`}
-          onClick={() => setIsDarkMode(!isDarkMode)}
-        >
+        <button className={`${isDarkMode ? "dark" : ""}`} onClick={() => setIsDarkMode(!isDarkMode)}>
           TOGGLE DARK MODE
         </button>
-        <small className={`${isDarkMode ? "white" : ""}`}>
-          Version 4.8.15.16.23.42
-        </small>
+        <small className={`${isDarkMode ? "white" : ""}`}>Version 4.8.15.16.23.42</small>
       </main>
     </>
   );

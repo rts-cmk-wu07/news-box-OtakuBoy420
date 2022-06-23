@@ -69,7 +69,7 @@ const Message = (props) => {
   return (
     <SwipeableList>
       <SwipeableListItem trailingActions={trailingActions()}>
-        <article css={styles.message} className={`${isDarkMode ? "dark" : ""}`}>
+        <article css={styles.message} className={`${isDarkMode ? "grey" : ""}`}>
           <img src={props.img} alt="img" />
           <div className="message__textContainer">
             <h2 className={`${isDarkMode ? "white" : ""}`}>{props.name}</h2>

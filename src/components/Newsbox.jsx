@@ -9,6 +9,7 @@ import NewsArticle from "./NewsArticle";
 import DarkmodeContext from "../context/DarkmodeContext";
 import "react-swipeable-list/dist/styles.css";
 import useFetch from "../useFetch";
+import CategoryContext from "../context/CategoryContext";
 
 const Newsbox = () => {
   const [showNewsSportContent, setShowNewsSportContent] = useState(false);
@@ -20,24 +21,19 @@ const Newsbox = () => {
     data: healthData,
     error: healthError,
     isPending: healthIsPending,
-  } = useFetch(
-    "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a"
-  );
+  } = useFetch("https://api.nytimes.com/svc/topstories/v2/health.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
 
   const {
     data: sportData,
     error: sportError,
     isPending: sportIsPending,
-  } = useFetch(
-    "https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a"
-  );
+  } = useFetch("https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
   const {
     data: travelData,
     error: travelError,
     isPending: travelIsPending,
-  } = useFetch(
-    "https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a"
-  );
+  } = useFetch("https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=Hdr2pqi2Q8HIdqp1KhDZFdNtVRMwf11a");
+  const { categories } = useContext(CategoryContext);
 
   return (
     <>
@@ -52,61 +48,38 @@ const Newsbox = () => {
       />
       <SearchField />
       <section>
-        <div onClick={() => setShowHealthContent(!showHealthContent)}>
-          <ArchiveCategory
-            categoryTitle="health"
-            icon={showHealthContent ? "FaChevronDown" : "FaChevronLeft"}
-          />
-        </div>
+        <div onClick={() => setShowHealthContent(!showHealthContent)}></div>
         {!healthIsPending &&
           showHealthContent &&
           healthData.results.map((data, index) => (
             <NewsArticle
               name={data.multimedia !== null ? data.title : "Article not found"}
-              img={
-                data.multimedia !== null
-                  ? data.multimedia[2].url
-                  : "https://picsum.photos/200/200"
-              }
+              img={data.multimedia !== null ? data.multimedia[2].url : "https://picsum.photos/200/200"}
               key={data.title + index}
             ></NewsArticle>
           ))}
 
         <div onClick={() => setShowNewsSportContent(!showNewsSportContent)}>
-          <ArchiveCategory
-            categoryTitle="sport"
-            icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"}
-          />
+          <ArchiveCategory categoryTitle="sport" icon={showNewsSportContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {!sportIsPending &&
           showNewsSportContent &&
           sportData.results.map((data, index) => (
             <NewsArticle
               name={data.multimedia !== null ? data.title : "Article not found"}
-              img={
-                data.multimedia !== null
-                  ? data.multimedia[2].url
-                  : "https://picsum.photos/200/200"
-              }
+              img={data.multimedia !== null ? data.multimedia[2].url : "https://picsum.photos/200/200"}
               key={index}
             ></NewsArticle>
           ))}
         <div onClick={() => setShowNewsTravelContent(!showNewsTravelContent)}>
-          <ArchiveCategory
-            categoryTitle="travel"
-            icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"}
-          />
+          <ArchiveCategory categoryTitle="travel" icon={showNewsTravelContent ? "FaChevronDown" : "FaChevronLeft"} />
         </div>
         {!travelIsPending &&
           showNewsTravelContent &&
           travelData.results.map((data, index) => (
             <NewsArticle
               name={data.multimedia !== null ? data.title : "Article not found"}
-              img={
-                data.multimedia !== null
-                  ? data.multimedia[2].url
-                  : "https://picsum.photos/200/200"
-              }
+              img={data.multimedia !== null ? data.multimedia[2].url : "https://picsum.photos/200/200"}
               key={index}
             ></NewsArticle>
           ))}
